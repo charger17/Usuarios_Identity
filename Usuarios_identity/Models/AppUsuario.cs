@@ -25,5 +25,7 @@ namespace Usuarios_identity.Models
 
 
         public DateTime FechaNacimiento { get; set; } = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd"));
+
+        public int Edad { get; set; }
     }
 }
