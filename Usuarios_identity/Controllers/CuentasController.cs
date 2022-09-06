@@ -72,16 +72,31 @@ namespace Usuarios_identity.Controllers
                 Direccion = registro.Direccion,
                 Edad = CalculaEdad(registro.FechaNacimiento)
             };
+
+            if(usuario.Edad <= 18)
+            {
+                ModelState.AddModelError(string.Empty, "Edad no válida.");
+                return View(registro);
+            }
+
             var resultado = await userManager.CreateAsync(usuario, registro.Password);
 
             if (resultado.Succeeded)
             {
                 await signInManager.SignInAsync(usuario, isPersistent: false);
 
-                return RedirectToAction("Home", "Index");
+                return RedirectToAction("Index", "Home");
             }
             ValidarErrores(resultado);
             return View(registro);
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> SalirAplicacion()
+        {
+            await signInManager.SignOutAsync();
+            return RedirectToAction("Index", "Cuentas");
         }
 
         private static int CalculaEdad(DateTime edad)
