@@ -6,13 +6,27 @@ namespace Usuarios_identity.Models
     [NotMapped]
     public class Registro
     {
+
+        #region Variables NO Requridas
+        [DataType(DataType.PhoneNumber, ErrorMessage = "No es un numero de telefono")]
+        [MaxLength(10)]
+        public string Telefono { get; set; }
+
+        [DataType(DataType.PhoneNumber, ErrorMessage = "No es un numero de telefono")]
+        [MaxLength(10)]
+        public string Celular { get; set; }
+        #endregion
+
+        #region Variables Requridas
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
         public string Nombre { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
+        [Display(Name = "Apellido Paterno")]
         public string ApellidoPaterno { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
+        [Display(Name = "Apellido Materno")]
         public string ApellidoMaterno { get; set; }
 
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
@@ -30,21 +44,19 @@ namespace Usuarios_identity.Models
         [Display(Name = "Confirmar contraseña")]
         public string ConfirmPassword { get; set; }
 
-        [DataType(DataType.PhoneNumber, ErrorMessage = "No es un numero de telefono")]
-        public int Telefono { get; set; }
-
-        [DataType(DataType.PhoneNumber, ErrorMessage = "No es un numero de telefono")]
-        public int Celular { get; set; }
-
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
         public string Direccion { get; set; }
 
 
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
+        [DataType(DataType.Date)]
         public DateTime FechaNacimiento { get; set; } = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd"));
 
-        
+
         public int Edad { get; set; }
+        #endregion
+
+
 
     }
 }

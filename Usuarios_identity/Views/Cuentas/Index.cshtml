@@ -1,0 +1,71 @@
+﻿@model Acceso
+@{
+	Layout = null;
+}
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Acceso</title>
+
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/Usuarios_identity.styles.css" asp-append-version="true" />
+</head>
+<body style="background-color: #56c8d8">
+
+	<div class="min-vh-100 row m-0 text-center align-items-center justify-content-center">
+		<div class="col-auto card" style="background-color:#81d4fa;">
+
+
+			<div class="row">
+				<h3>Ingresa tus datos</h3>
+			</div>
+			<form method="post" asp-controller="Cuentas" asp-action="Index">
+				<div class="card-body">
+					<div class="row">
+						<div>
+							<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+							<div class="form-group">
+								<label asp-for="Email"></label>
+								<input asp-for="Email" class="form-control" />
+								<span asp-validation-for="Email" class="text-danger"></span>
+							</div>
+							<div class="form-group">
+								<label asp-for="Password"></label>
+								<input asp-for="Password" class="form-control" />
+								<span asp-validation-for="Password" class="text-danger"></span>
+							</div>
+							<div class="custom-check">
+								<label asp-for="RememberMe">
+									<input asp-for="RememberMe" />
+									@Html.DisplayNameFor(m => m.RememberMe)
+								</label>
+							</div>
+						</div>
+					</div>
+					<div class="row">
+						<button type="submit" class="btn btn-success">Ingresar</button>
+					</div>
+				</div>
+			</form>
+
+			<div class="row">
+				<div class="col-sm-12">
+					<p><a asp-action="Registro">Registrarse como un nuevo usuario</a></p>
+				</div>
+			</div>
+
+		</div>
+	</div>
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+
+</body>
+</html>

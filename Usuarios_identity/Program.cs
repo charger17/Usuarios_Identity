@@ -12,6 +12,13 @@ builder.Services.AddDbContext<ApplicationDbContext>(
 //Agregamos el servicio Identity a la aplicación
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
+//Estas son opciones de configuracion del identity
+builder.Services.Configure<IdentityOptions>(options =>
+{
+    options.Password.RequiredLength = 5; //Minimo de caracteres
+    options.Password.RequireLowercase = false; //REquiere caracteres en minuscula
+});
+
 // Add services to the container.
 builder.Services.AddControllersWithViews();
 
@@ -35,6 +42,6 @@ app.UseAuthorization();
 
 app.MapControllerRoute(
     name: "default",
-    pattern: "{controller=Home}/{action=Index}/{id?}");
+    pattern: "{controller=Cuentas}/{action=Index}/{id?}");
 
 app.Run();
