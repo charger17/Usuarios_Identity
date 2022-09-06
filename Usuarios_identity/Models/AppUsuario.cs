@@ -14,12 +14,9 @@ namespace Usuarios_identity.Models
 
         public string Password { get; set; }
 
-
-        public string ConfirmPassword { get; set; }
-
-
         public int Telefono { get; set; }
 
+        public int Celular { get; set; }
 
         public string Direccion { get; set; }
 
