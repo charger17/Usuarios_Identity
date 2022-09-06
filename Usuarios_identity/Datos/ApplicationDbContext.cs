@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using Usuarios_identity.Models;
 
 namespace Usuarios_identity.Datos
 {
@@ -10,5 +11,8 @@ namespace Usuarios_identity.Datos
         {
 
         }
+
+        //Agregamos modelos
+        public DbSet<AppUsuario> AppUsuario { get; set; }
     }
 }
