@@ -49,6 +49,7 @@ namespace Usuarios_identity.Models
 
 
         [Required(ErrorMessage = "El campo {0} es obligatorio")]
+		[Display(Name = "Fecha de Nacimiento")]
         [DataType(DataType.Date)]
         public DateTime FechaNacimiento { get; set; } = DateTime.Parse(DateTime.Now.ToString("yyyy-MM-dd"));
 

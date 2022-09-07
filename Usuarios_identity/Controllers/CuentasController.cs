@@ -1,6 +1,7 @@
 ﻿using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Mvc;
 using Usuarios_identity.Models;
+using Usuarios_identity.Utilidades;
 
 namespace Usuarios_identity.Controllers
 {
@@ -8,6 +9,7 @@ namespace Usuarios_identity.Controllers
     {
         private readonly UserManager<IdentityUser> userManager;
         private readonly SignInManager<IdentityUser> signInManager;
+        private funcionesAdicionales adds = new funcionesAdicionales();
 
         public CuentasController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
         {
@@ -70,7 +72,7 @@ namespace Usuarios_identity.Controllers
                 ApellidoMaterno = registro.ApellidoMaterno,
                 FechaNacimiento = registro.FechaNacimiento,
                 Direccion = registro.Direccion,
-                Edad = CalculaEdad(registro.FechaNacimiento)
+                Edad = adds.CalculaEdad(registro.FechaNacimiento)
             };
 
             if(usuario.Edad <= 18)
@@ -99,10 +101,6 @@ namespace Usuarios_identity.Controllers
             return RedirectToAction("Index", "Cuentas");
         }
 
-        private static int CalculaEdad(DateTime edad)
-        {
-            return (int)DateTime.Today.AddTicks(-edad.Ticks).Year - 1;
-        }
 
         private void ValidarErrores(IdentityResult resultado)
         {

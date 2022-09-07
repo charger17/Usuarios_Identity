@@ -16,3 +16,12 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.swal-modal {
+    background-color: #1b1b1b;
+    border: 3px solid white;
+}
+
+.swal-overlay {
+    background-color: #1b1b1b;
+}

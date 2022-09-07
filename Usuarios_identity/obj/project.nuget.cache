@@ -1,9 +1,11 @@
 {
   "version": 2,
-  "dgSpecHash": "Oi4XEJjCsCy9gzsLTCzDep17eymGQqGWQfyRmCjPxcYw9YcDKEtKPvc3P6LKX9Yk+9GFU8bxwmQplIR7jm5pBA==",
+  "dgSpecHash": "nPUl5xSjiJ6Dm48ofpjVE7Ax8B23+XagBHl6/ll2EMEoJU87l3OqVZEiLbzRqxViO5kwF/Tf+x2Z8pVAVBWDaQ==",
   "success": true,
   "projectFilePath": "C:\\Users\\dhari\\Documents\\cursos\\proyectos\\Usuarios_identity\\Usuarios_identity\\Usuarios_identity.csproj",
   "expectedPackageFiles": [
+    "C:\\Users\\dhari\\.nuget\\packages\\automapper\\11.0.0\\automapper.11.0.0.nupkg.sha512",
+    "C:\\Users\\dhari\\.nuget\\packages\\automapper.extensions.microsoft.dependencyinjection\\11.0.0\\automapper.extensions.microsoft.dependencyinjection.11.0.0.nupkg.sha512",
     "C:\\Users\\dhari\\.nuget\\packages\\bootstrap\\5.2.0\\bootstrap.5.2.0.nupkg.sha512",
     "C:\\Users\\dhari\\.nuget\\packages\\humanizer.core\\2.8.26\\humanizer.core.2.8.26.nupkg.sha512",
     "C:\\Users\\dhari\\.nuget\\packages\\jquery\\3.6.0\\jquery.3.6.0.nupkg.sha512",
@@ -34,7 +36,7 @@
     "C:\\Users\\dhari\\.nuget\\packages\\microsoft.codeanalysis.visualbasic.workspaces\\4.0.0\\microsoft.codeanalysis.visualbasic.workspaces.4.0.0.nupkg.sha512",
     "C:\\Users\\dhari\\.nuget\\packages\\microsoft.codeanalysis.workspaces.common\\4.0.0\\microsoft.codeanalysis.workspaces.common.4.0.0.nupkg.sha512",
     "C:\\Users\\dhari\\.nuget\\packages\\microsoft.codeanalysis.workspaces.msbuild\\4.0.0\\microsoft.codeanalysis.workspaces.msbuild.4.0.0.nupkg.sha512",
-    "C:\\Users\\dhari\\.nuget\\packages\\microsoft.csharp\\4.5.0\\microsoft.csharp.4.5.0.nupkg.sha512",
+    "C:\\Users\\dhari\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
     "C:\\Users\\dhari\\.nuget\\packages\\microsoft.data.sqlclient\\2.1.4\\microsoft.data.sqlclient.2.1.4.nupkg.sha512",
     "C:\\Users\\dhari\\.nuget\\packages\\microsoft.data.sqlclient.sni.runtime\\2.1.1\\microsoft.data.sqlclient.sni.runtime.2.1.1.nupkg.sha512",
     "C:\\Users\\dhari\\.nuget\\packages\\microsoft.diasymreader\\1.3.0\\microsoft.diasymreader.1.3.0.nupkg.sha512",
@@ -182,7 +184,8 @@
     "C:\\Users\\dhari\\.nuget\\packages\\system.threading.timer\\4.3.0\\system.threading.timer.4.3.0.nupkg.sha512",
     "C:\\Users\\dhari\\.nuget\\packages\\system.windows.extensions\\6.0.0\\system.windows.extensions.6.0.0.nupkg.sha512",
     "C:\\Users\\dhari\\.nuget\\packages\\system.xml.readerwriter\\4.3.0\\system.xml.readerwriter.4.3.0.nupkg.sha512",
-    "C:\\Users\\dhari\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512"
+    "C:\\Users\\dhari\\.nuget\\packages\\system.xml.xdocument\\4.3.0\\system.xml.xdocument.4.3.0.nupkg.sha512",
+    "C:\\Users\\dhari\\.nuget\\packages\\wahid_sweetalert2\\1.0.0\\wahid_sweetalert2.1.0.0.nupkg.sha512"
   ],
   "logs": []
 }

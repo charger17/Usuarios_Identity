@@ -12,6 +12,9 @@ builder.Services.AddDbContext<ApplicationDbContext>(
 //Agregamos el servicio Identity a la aplicación
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
+
+builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
+
 //Estas son opciones de configuracion del identity
 builder.Services.Configure<IdentityOptions>(options =>
 {

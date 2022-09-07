@@ -1,8 +1,120 @@
-﻿@{
-    ViewData["Title"] = "Home Page";
+﻿@using Usuarios_identity.ViewModels
+@model List<UsuariosViewModel>
+
+@{
+	ViewData["Title"] = "Pagina de inicio";
 }
 
-<div class="text-center">
-    <h1 class="display-4">Welcome</h1>
-    <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
+<h1>Control de usuarios</h1>
+
+<div class="container mt-4">
+
+
+	<div class="row ">
+		<table class="table table-dark table-striped rounded-1 text-center">
+			<thead>
+				<tr>
+					<th>Nombre completo</th>
+					<th>Telefono / celular</th>
+					<th>Dirección</th>
+					<th>Fecha de Nacimiento</th>
+					<th>Edad</th>
+					<th>Editar</th>
+				</tr>
+			</thead>
+			<tbody>
+				@if (Model.Count() > 0)
+				{
+					@foreach (var item in Model)
+					{
+						<tr>
+							<td>@item.Nombre  @item.ApellidoPaterno @item.ApellidoMaterno</td>
+							<td>
+								@{
+									var number = "";
+									if (item.Telefono is not null)
+									{
+										number += "Tel:" + @item.Telefono.ToString();
+									}
+
+									if (item.Celular is not null)
+									{
+										number += " Cel:" + @item.Celular.ToString();
+									}
+								}
+								<p>@number</p>
+
+							</td>
+							<td>@item.Direccion</td>
+							<td>@item.FechaNacimiento.ToString(string.Format("dd/MM/yyyy"))</td>
+							<td>@item.Edad</td>
+							<td>
+								<a class="btn btn-success" asp-controller="Ediciones" asp-action="Editar" asp-route-id="@item.Id"><i class="bi bi-pencil-fill"></i></a>
+								<a class="btn btn-danger" onclick="preguntar('@item.Id')"><i class="bi bi-trash-fill"></i></a>
+							</td>
+						</tr>
+					}
+				}
+			</tbody>
+		</table>
+	</div>
+
+
 </div>
+
+
+@section Scripts{
+	<partial name="_ValidationScriptsPartial" />
+
+	<script type="text/javascript">
+
+		function preguntar(id) {
+			Swal.fire({
+				title: '¿Estás seguro?',
+				text: "No hay marcha atrás.",
+				icon: 'warning',
+				footer: "Recuerda que no se puede eliminar al usuario loggeado.",
+				showCancelButton: true,
+				confirmButtonColor: '#3085d6',
+				cancelButtonColor: '#d33',
+				confirmButtonText: 'Si',
+				cancelButtonText: 'No'
+			}).then((result) => {
+				if (result.isConfirmed) {
+					eliminar(id);
+				}
+			})
+		}
+
+		function eliminar(id) {
+			var urlCompleta = window.location.protocol + "//" + window.location.host + "/Ediciones/Borrar/" + id
+			console.log(urlCompleta)
+			fetch(urlCompleta, { method: 'DELETE' })
+				.then(async response => {
+                    if (response.ok) {
+                        Swal.fire(
+                            '!Eliminado!',
+                            'Se eliminó el usuario.',
+                            'success'
+                        )
+                        location.reload();
+                    }
+                    else {
+						Swal.fire({
+						  icon: 'error',
+						  title: 'Oops...',
+						  text: response.error,
+						})
+					}
+				})
+				.catch(error => {
+					Swal.fire({
+					  icon: 'error',
+					  title: 'Oops...',
+					  text: 'Algo no salió bien',
+					})
+				});
+		}
+
+	</script>
+}
