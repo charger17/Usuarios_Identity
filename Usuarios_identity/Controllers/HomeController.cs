@@ -32,7 +32,7 @@ namespace Usuarios_identity.Controllers
 
             if(user is not null)
             {
-                usuarios = usuarios.Where(x => x.Nombre.Contains(user)).ToList();
+                usuarios = usuarios.Where(x => x.NormalizedEmail.Contains(user.ToUpper())).ToList();
             }
 
             var usersVm = mapper.Map<List<UsuariosViewModel>>(usuarios);

@@ -12,6 +12,12 @@ builder.Services.AddDbContext<ApplicationDbContext>(
 //Agregamos el servicio Identity a la aplicación
 builder.Services.AddIdentity<IdentityUser, IdentityRole>().AddEntityFrameworkStores<ApplicationDbContext>().AddDefaultTokenProviders();
 
+//Esta linea es para la Url de retorno al acceder 
+builder.Services.ConfigureApplicationCookie(options =>
+{
+    options.LoginPath = new PathString("/Cuentas/Index");
+
+});
 
 builder.Services.AddAutoMapper(AppDomain.CurrentDomain.GetAssemblies());
 

@@ -18,15 +18,18 @@ namespace Usuarios_identity.Controllers
         }
 
         [HttpGet]
-        public IActionResult Index()
+        public IActionResult Index(string returnurl=null)
         {
+            ViewData["ReturnUrl"] = returnurl;
             Acceso access = new Acceso();
             return View(access);
         }
 
         [HttpPost]
-        public async Task< IActionResult> Index(Acceso access)
+        public async Task< IActionResult> Index(Acceso access, string returnurl = null)
         {
+            ViewData["ReturnUrl"] = returnurl;
+            returnurl = returnurl ?? Url.Content("~/");
             if (!ModelState.IsValid)
             {
                 return View(access);
@@ -36,6 +39,10 @@ namespace Usuarios_identity.Controllers
 
             if (resultado.Succeeded)
             {
+                if(returnurl.Length > 2)
+				{
+                    return Redirect(returnurl);
+                }
                 return RedirectToAction("Index", "Home");
             }
 

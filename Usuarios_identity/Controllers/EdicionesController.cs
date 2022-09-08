@@ -89,5 +89,45 @@ namespace Usuarios_identity.Controllers
             return Ok();
 		}
 
+        [HttpGet]
+        public IActionResult CambiarPassword(string Id)
+        {
+            var datos = new CambioPasswordViewModel()
+            {
+                Id = Id
+            };
+            return View(datos);
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> CambiarPassword(CambioPasswordViewModel cambioPasswordViewModel)
+        {
+			if (!ModelState.IsValid)
+			{
+
+                return View(cambioPasswordViewModel);
+			}
+            var usuario =  context.AppUsuario.Where(x => x.Id.Equals(cambioPasswordViewModel.Id)).FirstOrDefault();
+
+            var userData = await userManager.FindByEmailAsync(usuario.Email);
+
+            var token = await userManager.GeneratePasswordResetTokenAsync(userData);
+
+            var resultado = await userManager.ResetPasswordAsync(userData, token, cambioPasswordViewModel.Password);
+
+            if (resultado.Succeeded)
+			{
+                usuario = context.AppUsuario.Where(x => x.Id.Equals(cambioPasswordViewModel.Id)).FirstOrDefault();
+                usuario.Password = cambioPasswordViewModel.Password;
+
+                await userManager.UpdateAsync(usuario);
+
+                return RedirectToAction("Index", "Home");
+			}
+
+            return View(cambioPasswordViewModel);
+
+        }
+
     }
 }
