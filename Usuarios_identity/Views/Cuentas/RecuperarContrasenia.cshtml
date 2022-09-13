@@ -1,0 +1,58 @@
+﻿@{
+	Layout = null;
+}
+@model Acceso
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Registro</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/Usuarios_identity.styles.css" asp-append-version="true" />
+</head>
+<body style="background-color: #212121; color:white;">
+
+	<div class="min-vh-100 row m-0 text-center align-items-center justify-content-center">
+		<div class="col-auto card" style="background-color:#1b1b1b;">
+
+
+			<div class="row">
+				<h3>Recuperar contraseña</h3>
+			</div>
+			<form method="post" asp-controller="Cuentas" asp-action="RecuperarContrasenia" class=" w-100">
+							<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+				<div class="card-body ">
+					<div class="row">
+							
+							<div class="form-group">
+								<h5>Ingresa tu Email</h5>
+							</div>
+
+							<div class="form-group">
+								<input asp-for="Email" class="form-control" />
+								<span asp-validation-for="Email" class="text-danger"></span>
+							</div>
+
+						
+					</div>
+				</div>
+				<div class="row mt-3">
+					<button type="submit" id=edad class="btn btn-success">Ingresar</button>
+				</div>
+			</form>
+
+		</div>
+	</div>
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+
+
+</body>
+</html>

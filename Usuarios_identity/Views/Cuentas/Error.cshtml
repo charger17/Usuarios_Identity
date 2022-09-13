@@ -1,0 +1,34 @@
+﻿@{
+	Layout = null;
+}
+@using Usuarios_identity.ViewModels;
+@model OlvidoPasswordViewModel
+
+<!DOCTYPE html>
+
+<html>
+<head>
+	<meta name="viewport" content="width=device-width" />
+	<title>Registro</title>
+	<link rel="stylesheet" href="~/lib/bootstrap/dist/css/bootstrap.min.css" />
+	<link rel="stylesheet" href="~/css/site.css" asp-append-version="true" />
+	<link rel="stylesheet" href="~/Usuarios_identity.styles.css" asp-append-version="true" />
+</head>
+<body style="background-color: #212121; color:white;">
+
+	<div class="min-vh-100 row m-0 text-center align-items-center justify-content-center">
+		<h2>Error</h2>
+		
+
+	</div>
+
+	<script src="~/lib/jquery/dist/jquery.min.js"></script>
+	<script src="~/lib/bootstrap/dist/js/bootstrap.bundle.min.js"></script>
+	<script src="~/js/site.js" asp-append-version="true"></script>
+	@{
+		await Html.RenderPartialAsync("_ValidationScriptsPartial");
+	}
+
+
+</body>
+</html>

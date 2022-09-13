@@ -1,6 +1,8 @@
 using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.EntityFrameworkCore;
 using Usuarios_identity.Datos;
+using Usuarios_identity.Servicios;
 
 var builder = WebApplication.CreateBuilder(args);
 
@@ -27,6 +29,10 @@ builder.Services.Configure<IdentityOptions>(options =>
     options.Password.RequiredLength = 5; //Minimo de caracteres
     options.Password.RequireLowercase = false; //REquiere caracteres en minuscula
 });
+
+//Se agrega IEmailSender
+builder.Services.AddTransient<IEmailSender, MailJetEmailSender>();
+
 
 // Add services to the container.
 builder.Services.AddControllersWithViews();

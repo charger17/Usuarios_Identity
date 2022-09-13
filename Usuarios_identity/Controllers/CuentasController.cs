@@ -1,7 +1,11 @@
 ﻿using Microsoft.AspNetCore.Identity;
+using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
+using Usuarios_identity.Datos;
 using Usuarios_identity.Models;
+using Usuarios_identity.Servicios;
 using Usuarios_identity.Utilidades;
+using Usuarios_identity.ViewModels;
 
 namespace Usuarios_identity.Controllers
 {
@@ -9,12 +13,16 @@ namespace Usuarios_identity.Controllers
     {
         private readonly UserManager<IdentityUser> userManager;
         private readonly SignInManager<IdentityUser> signInManager;
+        private readonly ApplicationDbContext contexto;
+        private readonly IEmailSender emailSender;
         private funcionesAdicionales adds = new funcionesAdicionales();
 
-        public CuentasController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager)
+        public CuentasController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, ApplicationDbContext contexto, IEmailSender emailSender )
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
+            this.contexto = contexto;
+            this.emailSender = emailSender;
         }
 
         [HttpGet]
@@ -109,6 +117,94 @@ namespace Usuarios_identity.Controllers
         }
 
 
+        [HttpGet]
+        public IActionResult RecuperarContrasenia()
+        {
+            return View();
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> RecuperarContrasenia(Acceso acceso)
+        {
+            if (ModelState.IsValid)
+            {
+                return View(acceso);
+            }
+
+            var resultado = await userManager.FindByEmailAsync(acceso.Email);
+
+            if (resultado is null)
+            {
+                ModelState.AddModelError(string.Empty, "No existe el usuario.");
+                return View(acceso);
+            }
+
+            var codigo = await userManager.GeneratePasswordResetTokenAsync(resultado);
+
+            var urlRetorno = Url.Action("OlvidoPassword", "Cuentas", new { userId = resultado.Id, code = codigo }, protocol: HttpContext.Request.Scheme);
+
+            await emailSender.SendEmailAsync(acceso.Email, "Recuperar Contraseña - Usuarios Idendity" ,"Por favor confirme su cuenta dando clic aqui: " + urlRetorno + "&email=" + resultado.Email);
+
+            return RedirectToAction("ConfirmacionOlvidoPassword", "Cuentas");
+        }
+
+        [HttpGet]
+        public IActionResult OlvidoPassword(string code, string email)
+        {
+            OlvidoPasswordViewModel ovps = new OlvidoPasswordViewModel()
+            {
+                Email = email
+            };
+            return code == null ? View("Error", "Cuentas"):View(ovps);
+
+        }
+
+        [HttpPost]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> OlvidoPassword(OlvidoPasswordViewModel olvidoPassword )
+        {
+            if (!ModelState.IsValid)
+            {
+
+                return View(olvidoPassword);
+            }
+
+
+            var usuario = await userManager.FindByEmailAsync(olvidoPassword.Email);
+
+            if (usuario is null)
+            {
+                return RedirectToAction("Error", "Cuentas");
+            }
+
+            var resultado = await userManager.ResetPasswordAsync(usuario, olvidoPassword.code, olvidoPassword.Password);
+
+            if (resultado.Succeeded)
+            {
+                var usuarioDos = contexto.AppUsuario.Where(x => x.Email.Equals(olvidoPassword.Email)).FirstOrDefault();
+                usuarioDos.Password = olvidoPassword.Password;
+
+                await userManager.UpdateAsync(usuarioDos);
+
+                return RedirectToAction("Index", "Home");
+            }
+
+            return View(olvidoPassword);
+        }
+    
+
+        [HttpGet]
+        public IActionResult ConfirmacionOlvidoPassword()
+        {
+            return View();
+        }
+
+        [HttpGet]
+        public IActionResult Error()
+        {
+            return View();
+        }
         private void ValidarErrores(IdentityResult resultado)
         {
             foreach (var error in resultado.Errors)

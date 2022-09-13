@@ -15,8 +15,24 @@ build_property.GenerateRazorMetadataSourceChecksumAttributes =
 build_property.MSBuildProjectDirectory = C:\Users\dhari\Documents\cursos\proyectos\Usuarios_identity\Usuarios_identity
 build_property._RazorSourceGeneratorDebug = 
 
+[C:/Users/dhari/Documents/cursos/proyectos/Usuarios_identity/Usuarios_identity/Views/Cuentas/ConfirmacionOlvidoPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhc1xDb25maXJtYWNpb25PbHZpZG9QYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/dhari/Documents/cursos/proyectos/Usuarios_identity/Usuarios_identity/Views/Cuentas/Error.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhc1xFcnJvci5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
 [C:/Users/dhari/Documents/cursos/proyectos/Usuarios_identity/Usuarios_identity/Views/Cuentas/Index.cshtml]
 build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhc1xJbmRleC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/dhari/Documents/cursos/proyectos/Usuarios_identity/Usuarios_identity/Views/Cuentas/OlvidoPassword.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhc1xPbHZpZG9QYXNzd29yZC5jc2h0bWw=
+build_metadata.AdditionalFiles.CssScope = 
+
+[C:/Users/dhari/Documents/cursos/proyectos/Usuarios_identity/Usuarios_identity/Views/Cuentas/RecuperarContrasenia.cshtml]
+build_metadata.AdditionalFiles.TargetPath = Vmlld3NcQ3VlbnRhc1xSZWN1cGVyYXJDb250cmFzZW5pYS5jc2h0bWw=
 build_metadata.AdditionalFiles.CssScope = 
 
 [C:/Users/dhari/Documents/cursos/proyectos/Usuarios_identity/Usuarios_identity/Views/Cuentas/Registro.cshtml]
