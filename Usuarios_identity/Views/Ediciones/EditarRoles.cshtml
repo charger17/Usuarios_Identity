@@ -1,0 +1,86 @@
+﻿@{
+	ViewData["Title"] = "EditarRoles";
+}
+@using Usuarios_identity.ViewModels
+@using Microsoft.AspNetCore.Identity
+@model EditarRolesViewModel
+<h1>Editar Roles</h1>
+
+<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+<div class="col-auto card mt-5" style="background-color:#1b1b1b;">
+
+
+	<div class="row">
+		<form method="post" asp-controller="Ediciones" asp-action="CreateRole" class=" w-100">
+			<div class="card-body ">
+				<h3>Crear Perfil</h3>
+				<label asp-for="Rol" class="col-md-2"></label>
+				<input asp-for="Rol" class="form-control" />
+				<span asp-validation-for="Rol" class="text-danger"></span>
+				<div class="row mt-3">
+					<button type="submit" id=edad class="btn btn-success">Crear</button>
+				</div>
+			</div>
+		</form>
+	</div>
+
+</div>
+
+<div class="col-auto card mt-5" style="background-color:#1b1b1b;">
+	<div class="row">
+		<form method="post" asp-controller="Ediciones" asp-action="EditarRoles" class=" w-100">
+			<div class="card-body ">
+				<h3>Asignar Perfil</h3>
+				<div class="row">
+
+					<div class="col-6">
+						<label asp-for="Usuario" class="col-md-4"></label>
+						<select asp-for="Usuario" asp-items="@Model.Usuarios" class="form-select" aria-label="Default select example">
+							<option disabled selected>--Seleccione---</option>
+						</select>
+						<span asp-validation-for="Usuario" class="text-danger"></span>
+					</div>
+					<div class="col-6">
+						<label asp-for="Rol" class="col-md-4"></label>
+						<select asp-for="Rol" asp-items="@Model.RolesList" class="form-select" aria-label="Default select example">
+							<option disabled selected>--Seleccione---</option>
+						</select>
+						<span asp-validation-for="Rol" class="text-danger"></span>
+					</div>
+				</div>
+
+				<div class="row mt-3">
+					<button type="submit" id=edad class="btn btn-success">Asignar</button>
+				</div>
+			</div>
+		</form>
+	</div>
+</div>
+
+<div class="container mt-5">
+	<h5>Usuarios Y Su Rol</h5>
+	<div class="row">
+		<table class="table table-warning">
+			<thead>
+				<tr>
+					<th>Nombre</th>
+					<th>Rol Asignado</th>
+				</tr>
+			</thead>
+			<tbody>
+				@foreach (var item in Model.UsuariosRole)
+				{
+					<tr>
+						<td>@item.Nombre</td>
+						<td>@item.NameRole</td>
+					</tr>
+				}
+			</tbody>
+		</table>
+	</div>
+</div>
+
+
+@section Scripts{
+	<partial name="_ValidationScriptsPartial" />
+}

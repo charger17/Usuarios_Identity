@@ -1,4 +1,5 @@
-﻿using Microsoft.AspNetCore.Identity;
+﻿using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.Identity;
 using Microsoft.AspNetCore.Identity.UI.Services;
 using Microsoft.AspNetCore.Mvc;
 using Usuarios_identity.Datos;
@@ -15,14 +16,16 @@ namespace Usuarios_identity.Controllers
         private readonly SignInManager<IdentityUser> signInManager;
         private readonly ApplicationDbContext contexto;
         private readonly IEmailSender emailSender;
+        private readonly RoleManager<IdentityRole> roleManager;
         private funcionesAdicionales adds = new funcionesAdicionales();
 
-        public CuentasController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, ApplicationDbContext contexto, IEmailSender emailSender )
+        public CuentasController(UserManager<IdentityUser> userManager, SignInManager<IdentityUser> signInManager, ApplicationDbContext contexto, IEmailSender emailSender, RoleManager<IdentityRole> roleManager )
         {
             this.userManager = userManager;
             this.signInManager = signInManager;
             this.contexto = contexto;
             this.emailSender = emailSender;
+            this.roleManager = roleManager;
         }
 
         [HttpGet]
@@ -49,6 +52,8 @@ namespace Usuarios_identity.Controllers
             {
                 if(returnurl.Length > 2)
 				{
+                    if(returnurl.Contains("Den"))
+
                     return Redirect(returnurl);
                 }
                 return RedirectToAction("Index", "Home");
@@ -64,12 +69,29 @@ namespace Usuarios_identity.Controllers
         {
             Registro registro = new Registro();
 
+            //Para la creacion de los roles
+
+            if (!await roleManager.RoleExistsAsync("Administrador"))
+            {
+                //Creacion del rol usuairo Administrador
+                await roleManager.CreateAsync(new IdentityRole("Administrador"));
+            }
+
+            if (!await roleManager.RoleExistsAsync("Registrado"))
+            {
+                //Creacion del rol usuairo registrado
+                await roleManager.CreateAsync(new IdentityRole("Registrado"));
+            }
+
+
+
             return View(registro);
         }
 
         [HttpPost]
         public async Task<IActionResult> Registro(Registro registro)
         {
+           
             if (!ModelState.IsValid)
             {
                 return View(registro);
@@ -108,6 +130,7 @@ namespace Usuarios_identity.Controllers
             return View(registro);
         }
 
+        [Authorize]
         [HttpPost]
         [ValidateAntiForgeryToken]
         public async Task<IActionResult> SalirAplicacion()

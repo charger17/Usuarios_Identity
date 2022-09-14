@@ -1,4 +1,5 @@
 ﻿using AutoMapper;
+using Microsoft.AspNetCore.Identity;
 using Usuarios_identity.Models;
 using Usuarios_identity.ViewModels;
 
@@ -10,6 +11,9 @@ namespace Usuarios_identity.Utilidades
         {
             CreateMap<UsuariosViewModel, AppUsuario>();
             CreateMap<AppUsuario, UsuariosViewModel>();
+
+            CreateMap<IdentityRole, Roles>();
+            CreateMap<Roles, IdentityRole>();
         }
 
     }

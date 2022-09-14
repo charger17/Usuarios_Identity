@@ -1,0 +1,41 @@
+﻿@using Usuarios_identity.ViewModels
+@model SolicitarRol
+@{
+	ViewData["Title"] = "Solicitar";
+}
+
+<h1>Solicitar</h1>
+
+
+<div class="row">
+	<span>Ingresa tus razones por las cuales deberías ser administrador.</span>
+
+	<div class=" card mt-5" style="background-color:#1b1b1b;">
+
+
+		<form method="post" asp-controller="Ediciones" asp-action="Solicitar" class=" w-100">
+			<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+			<input type="hidden" asp-for="Id" />
+			<label >Email: </label>
+			<input disabled asp-for="Name" class="form-control" />
+
+				<div class="form-group">
+					<label asp-for="Descripcion"></label>
+					<textarea rows="5" cols="12" asp-for="Descripcion" class="form-control" ></textarea>
+					<span asp-validation-for="Descripcion" class="text-danger"></span>
+				</div>
+				<div class="row mt-3">
+					<button type="submit" id=edad class="btn btn-success">Solicitar</button>
+				</div>
+		</form>
+
+	</div>
+
+
+</div>
+
+
+
+@section Scripts{
+	<partial name="_ValidationScriptsPartial" />
+}

@@ -1,5 +1,9 @@
 ﻿@using Usuarios_identity.ViewModels
+@using Microsoft.AspNetCore.Identity
 @model List<UsuariosViewModel>
+
+@inject SignInManager<IdentityUser> SignInManager
+@inject UserManager<IdentityUser> UserManager
 
 @{
 	ViewData["Title"] = "Pagina de inicio";
@@ -32,7 +36,10 @@
 					<th>Dirección</th>
 					<th>Fecha de Nacimiento</th>
 					<th>Edad</th>
-					<th>Editar</th>
+					@if (User.IsInRole("Administrador"))
+					{
+						<th>Editar</th>
+					}
 				</tr>
 			</thead>
 			<tbody>
@@ -41,7 +48,13 @@
 					@foreach (var item in Model)
 					{
 						<tr>
-							<td>@item.Nombre  @item.ApellidoPaterno @item.ApellidoMaterno</td>
+							<td>@item.Nombre  @item.ApellidoPaterno @item.ApellidoMaterno  
+								@if (User.Identity.Name == item.Email)
+								{
+									<i class="bi bi-check2-circle"></i>
+								}
+
+							</td>
 							<td>@item.Email</td>
 							<td>
 								@{
@@ -62,10 +75,14 @@
 							<td>@item.Direccion</td>
 							<td>@item.FechaNacimiento.ToString(string.Format("dd/MM/yyyy"))</td>
 							<td>@item.Edad</td>
-							<td>
-								<a class="btn btn-success" asp-controller="Ediciones" asp-action="Editar" asp-route-id="@item.Id"><i class="bi bi-pencil-fill"></i></a>
-								<a class="btn btn-danger" onclick="preguntar('@item.Id')"><i class="bi bi-trash-fill"></i></a>
-							</td>
+							@if (User.IsInRole("Administrador"))
+							{
+								<td>
+									<a class="btn btn-success" asp-controller="Ediciones" asp-action="Editar" asp-route-id="@item.Id"><i class="bi bi-pencil-fill"></i></a>
+									<a class="btn btn-danger" onclick="preguntar('@item.Id')"><i class="bi bi-trash-fill"></i></a>
+								</td>
+								
+							}
 						</tr>
 					}
 				}

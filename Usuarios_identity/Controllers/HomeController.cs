@@ -16,13 +16,15 @@ namespace Usuarios_identity.Controllers
         private readonly UserManager<IdentityUser> userManager;
         private readonly ApplicationDbContext context;
         private readonly IMapper mapper;
+        private readonly RoleManager<IdentityRole> roleManager;
 
-        public HomeController(ILogger<HomeController> logger, UserManager<IdentityUser> userManager, ApplicationDbContext _context, IMapper mapper)
+        public HomeController(ILogger<HomeController> logger, UserManager<IdentityUser> userManager, ApplicationDbContext _context, IMapper mapper, RoleManager<IdentityRole> roleManager)
         {
             _logger = logger;
             this.userManager = userManager;
             context = _context;
             this.mapper = mapper;
+            this.roleManager = roleManager;
         }
 
         [HttpGet]
