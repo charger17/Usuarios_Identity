@@ -364,5 +364,5 @@ FodyWeavers.xsd
 
 *.Usuarios_identity/obj/
 *.Usuarios_identity/bin/
-.Usuarios_identity/obj/
-.Usuarios_identity/bin/
+Usuarios_identity/obj/*
+Usuarios_identity/bin/*

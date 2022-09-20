@@ -122,6 +122,8 @@ namespace Usuarios_identity.Controllers
 
             if (resultado.Succeeded)
             {
+                await userManager.AddToRoleAsync(usuario, "Registrado");
+
                 await signInManager.SignInAsync(usuario, isPersistent: false);
 
                 return RedirectToAction("Index", "Home");
