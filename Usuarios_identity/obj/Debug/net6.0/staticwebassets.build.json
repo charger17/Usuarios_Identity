@@ -1,6 +1,6 @@
 {
   "Version": 1,
-  "Hash": "9nUwT/nfUi7BPrj6I2jogPMImxws4DeQNjjfPV8aDuA=",
+  "Hash": "85c7aPiNhj35RD4WsMIC4TLfnrsQEiH4jzHC7P0MwD0=",
   "Source": "Usuarios_identity",
   "BasePath": "_content/Usuarios_identity",
   "Mode": "Default",
@@ -1853,12 +1853,12 @@
       "OriginalItemSpec": "wwwroot\\favicon.ico"
     },
     {
-      "Identity": "C:\\Users\\dhari\\Documents\\cursos\\proyectos\\Usuarios_identity\\Usuarios_identity\\wwwroot\\iconos\\icono.png",
+      "Identity": "C:\\Users\\dhari\\Documents\\cursos\\proyectos\\Usuarios_identity\\Usuarios_identity\\wwwroot\\iconos\\icono.ico",
       "SourceId": "Usuarios_identity",
       "SourceType": "Discovered",
       "ContentRoot": "C:\\Users\\dhari\\Documents\\cursos\\proyectos\\Usuarios_identity\\Usuarios_identity\\wwwroot\\",
       "BasePath": "_content/Usuarios_identity",
-      "RelativePath": "iconos/icono.png",
+      "RelativePath": "iconos/icono.ico",
       "AssetKind": "All",
       "AssetMode": "All",
       "AssetRole": "Primary",
@@ -1867,7 +1867,7 @@
       "AssetTraitValue": "",
       "CopyToOutputDirectory": "Never",
       "CopyToPublishDirectory": "PreserveNewest",
-      "OriginalItemSpec": "wwwroot\\iconos\\icono.png"
+      "OriginalItemSpec": "wwwroot\\iconos\\icono.ico"
     },
     {
       "Identity": "C:\\Users\\dhari\\Documents\\cursos\\proyectos\\Usuarios_identity\\Usuarios_identity\\wwwroot\\js\\site.js",

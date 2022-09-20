@@ -15,7 +15,14 @@
 	<link rel="stylesheet" href="~/Usuarios_identity.styles.css" asp-append-version="true" />
 </head>
 <body style="background-color: #56c8d8">
-
+	<header>
+		<nav class="navbar navbar-expand-sm navbar-toggleable-sm border-bottom box-shadow mb-3 navbar-dark bg-dark">
+			<div class="container-fluid">
+				<h1 class="navbar-brand" asp-area="" >Registro de Usuarios</h1>				
+			</div>
+		</nav>
+	</header>
+		
 	<div class="min-vh-100 row m-0 text-center align-items-center justify-content-center">
 		<div class="col-auto card" style="background-color:#81d4fa;">
 
@@ -59,7 +66,7 @@
 			</div>
 			<div class="row">
 				<div class="col-sm-12">
-					<p><a asp-action="RecuperarContrasenia">Olvidé mi contraseña 😢</a></p>
+					<p><a asp-action="RecuperarContrasenia" style="text-decoration:none">Olvidé mi contraseña 😢</a></p>
 				</div>
 			</div>
 
