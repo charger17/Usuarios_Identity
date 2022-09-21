@@ -1,5 +1,6 @@
 ﻿using Microsoft.AspNetCore.Identity.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore;
+using System.ComponentModel.DataAnnotations.Schema;
 using Usuarios_identity.Models;
 
 namespace Usuarios_identity.Datos
@@ -18,6 +19,9 @@ namespace Usuarios_identity.Datos
         public DbSet<UsuariosRoleViewModel> UsuariosRolesViewModel { get; set; }
 
         public DbSet<SolicitarRol> SolicitarRol { get; set; }
+
+        public DbSet<ComentarioAlAdministrador> ComentarioAlAdministrador { get; set; }
+
         protected override void OnModelCreating(ModelBuilder modelBuilder)
         {
 

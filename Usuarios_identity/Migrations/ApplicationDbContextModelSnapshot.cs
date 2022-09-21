@@ -226,6 +226,29 @@ namespace Usuarios_identity.Migrations
                     b.ToTable("AspNetUserTokens", (string)null);
                 });
 
+            modelBuilder.Entity("Usuarios_identity.Models.ComentarioAlAdministrador", b =>
+                {
+                    b.Property<int>("IdNo")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("IdNo"), 1L, 1);
+
+                    b.Property<string>("Comentario")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Email")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Id")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.HasKey("IdNo");
+
+                    b.ToTable("ComentarioAlAdministrador");
+                });
+
             modelBuilder.Entity("Usuarios_identity.Models.SolicitarRol", b =>
                 {
                     b.Property<string>("Id")

@@ -28,7 +28,6 @@ C:\Users\dhari\Documents\cursos\proyectos\Usuarios_identity\Usuarios_identity\bi
 C:\Users\dhari\Documents\cursos\proyectos\Usuarios_identity\Usuarios_identity\bin\Debug\net6.0\Microsoft.AspNetCore.Identity.UI.dll
 C:\Users\dhari\Documents\cursos\proyectos\Usuarios_identity\Usuarios_identity\bin\Debug\net6.0\Microsoft.AspNetCore.Razor.Language.dll
 C:\Users\dhari\Documents\cursos\proyectos\Usuarios_identity\Usuarios_identity\bin\Debug\net6.0\Microsoft.Bcl.AsyncInterfaces.dll
-C:\Users\dhari\Documents\cursos\proyectos\Usuarios_identity\Usuarios_identity\bin\Debug\net6.0\Microsoft.Build.Locator.dll
 C:\Users\dhari\Documents\cursos\proyectos\Usuarios_identity\Usuarios_identity\bin\Debug\net6.0\Microsoft.CodeAnalysis.AnalyzerUtilities.dll
 C:\Users\dhari\Documents\cursos\proyectos\Usuarios_identity\Usuarios_identity\bin\Debug\net6.0\Microsoft.CodeAnalysis.dll
 C:\Users\dhari\Documents\cursos\proyectos\Usuarios_identity\Usuarios_identity\bin\Debug\net6.0\Microsoft.CodeAnalysis.CSharp.dll
@@ -271,3 +270,6 @@ C:\Users\dhari\Documents\cursos\proyectos\Usuarios_identity\Usuarios_identity\ob
 C:\Users\dhari\Documents\cursos\proyectos\Usuarios_identity\Usuarios_identity\obj\Debug\net6.0\Usuarios_identity.pdb
 C:\Users\dhari\Documents\cursos\proyectos\Usuarios_identity\Usuarios_identity\obj\Debug\net6.0\Usuarios_identity.genruntimeconfig.cache
 C:\Users\dhari\Documents\cursos\proyectos\Usuarios_identity\Usuarios_identity\obj\Debug\net6.0\ref\Usuarios_identity.dll
+C:\Users\dhari\Documents\cursos\proyectos\Usuarios_identity\Usuarios_identity\bin\Debug\net6.0\Microsoft.Build.dll
+C:\Users\dhari\Documents\cursos\proyectos\Usuarios_identity\Usuarios_identity\bin\Debug\net6.0\Microsoft.Build.Framework.dll
+C:\Users\dhari\Documents\cursos\proyectos\Usuarios_identity\Usuarios_identity\bin\Debug\net6.0\Microsoft.NET.StringTools.dll

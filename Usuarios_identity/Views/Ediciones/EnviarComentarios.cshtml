@@ -1,0 +1,39 @@
+﻿@{
+	ViewData["Title"] = "Enviar Comentarios";
+}
+@model ComentarioAlAdministrador
+<h1>Enviar Comentarios a la Administración</h1>
+
+<div class="container ">
+	<div class="row ">
+
+		<div class=" card mt-5 text-center d-flex align-items-center overflow-scroll w-100" style="background-color:#1b1b1b;max-height: 400px">
+
+			<form method="post" asp-controller="Ediciones" asp-action="EnviarComentarios" class=" w-100">
+				<input asp-for="Id" hidden class="form-control" />
+				<input asp-for="Email" hidden class="form-control" />
+				<div asp-validation-summary="ModelOnly" class="text-danger"></div>
+				<div class="row mt-3">
+					<div class="form-group">
+						<label asp-for="Comentario"></label>
+						<textarea  rows="10" asp-for="Comentario" class="form-control" ></textarea>
+						<span asp-validation-for="Comentario" class="text-danger"></span>
+					</div>
+				</div>
+
+				<div class="row mt-3">
+					<button type="submit" class="btn btn-success">Enviar</button>
+				</div>
+			</form>
+
+		</div>
+
+
+	</div>
+</div>
+
+
+@section Scripts{
+	<partial name="_ValidationScriptsPartial" />
+
+}

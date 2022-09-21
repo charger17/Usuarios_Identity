@@ -20,6 +20,9 @@
 					<li class="nav-item">
 						<a class="nav-link text-dark" asp-controller="Ediciones" asp-action="VerSolicitudes">Ver Solicitudes</a>
 					</li>
+					<li class="nav-item">
+						<a class="nav-link text-dark" asp-controller="Ediciones" asp-action="VerComentarios">Ver Comentarios</a>
+					</li>
 				</ul>
 			</li>
 
@@ -40,6 +43,9 @@
 				<ul class="dropdown-menu" aria-labelledby="navbarDropdown">
 					<li class="nav-item">
 						<a class="nav-link text-dark" asp-controller="Ediciones" asp-action="Solicitar" asp-route-Name="@User.Identity.Name">Solicitar Rol Administrativo</a>
+					</li>
+					<li class="nav-item">
+						<a class="nav-link text-dark" asp-controller="Ediciones" asp-action="EnviarComentarios" asp-route-Name="@User.Identity.Name">Enviar comentarios al Administrativo</a>
 					</li>
 				</ul>
 			</li>

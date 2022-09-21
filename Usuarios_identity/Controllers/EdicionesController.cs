@@ -307,6 +307,62 @@ namespace Usuarios_identity.Controllers
             return RedirectToAction("VerSolicitudes", "Ediciones");
         }
 
+
+        [HttpGet]
+        [Authorize(Roles="Registrado")]
+        public async Task<IActionResult> EnviarComentarios(string Name)
+        {
+
+            var user = await userManager.FindByEmailAsync(Name);
+
+            ComentarioAlAdministrador coments = new ComentarioAlAdministrador()
+            {
+                Id = user.Id,
+                Email = user.Email
+            };
+
+
+            return View(coments);
+        }
+
+        [HttpPost]
+        [Authorize(Roles = "Registrado")]
+        [ValidateAntiForgeryToken]
+        public async Task<IActionResult> EnviarComentarios(ComentarioAlAdministrador comentarios)
+        {
+            if (!ModelState.IsValid)
+            {
+                return View(comentarios);
+            }
+
+            await context.AddAsync(comentarios);
+            context.SaveChanges();
+
+            return RedirectToAction("Listo", "Ediciones", new MensajesViewModel { titulo = "Listo", mensaje = "Sus comentarios han sido enviados al equipo administrativo." });
+        }
+
+
+        [HttpGet]
+        [Authorize(Roles = "Administrador")]
+        public async Task<IActionResult> VerComentarios()
+        {
+            var coments = context.ComentarioAlAdministrador.ToList();
+
+            return View(coments);
+        }
+
+        [HttpGet]
+        [Authorize(Roles = "Administrador")]
+        public async Task<IActionResult> Read(int id)
+        {
+            var coment = await context.ComentarioAlAdministrador.Where(x => x.IdNo.Equals(id)).FirstOrDefaultAsync();
+
+            context.Remove(coment);
+            await context.SaveChangesAsync();
+            return RedirectToAction("VerComentarios", "Ediciones");
+        }
+
+
         private EditarRolesViewModel setList()
         {
             EditarRolesViewModel EditRoles = new EditarRolesViewModel();
